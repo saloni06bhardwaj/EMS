@@ -26,6 +26,7 @@ const Login = () => {
                 className="bg-zinc-700 p-10 rounded-md flex flex-col gap-4"
                 onSubmit={submitHandler}
             >
+                {/* input */}
                 <input
                     value={email}
                     type="email"
