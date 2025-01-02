@@ -18,7 +18,7 @@ const CreateTask = () => {
                         </div>
 
                         <div className="flex flex-col gap-3">
-                            <h3 className='text-sm text-gray-300 mb-0.5'>Date</h3>
+                            <h3 className='text-sm text-gray-300 mb-0.5'>Task Date</h3>
                             <input type="date" name="dob" id="" className='p-2 border border--300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500' />
                         </div>
                         <div className="flex flex-col gap-3">
