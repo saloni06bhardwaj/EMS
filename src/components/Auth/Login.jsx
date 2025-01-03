@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify'; // Correct import
 import 'react-toastify/dist/ReactToastify.css'; // Ensure CSS is imported
 
-const Login = () => {
+const Login = ({handleLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault();
-
-        console.log("email is ", email);
-        console.log("password is ", password);
+        handleLogin(email, password);
 
         // Show a success toast notification
         toast.success('Logged in successfully!');
@@ -21,7 +19,7 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center h-screen ">
             <form
                 className="bg-zinc-700 p-10 rounded-md flex flex-col gap-4"
                 onSubmit={submitHandler}
