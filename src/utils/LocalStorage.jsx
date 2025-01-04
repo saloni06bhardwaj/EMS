@@ -1,5 +1,5 @@
-const employees = [
-    [
+const employees = [ [
+    
         {
             "id": 1,
             "email": "employee1@example.com",
@@ -135,8 +135,8 @@ const employees = [
                 }
             ]
         }
-    ]
-];
+    
+]];
 
 const admin = [
     {
@@ -155,7 +155,6 @@ export  const setLocalStorage =() =>{
 export const getLocalStorage = () => {
    const employees =JSON.parse(localStorage.getItem('employees'));
    const admin = JSON.parse(localStorage.getItem('admin'));
-   
-   console.log(employees);
-   console.log(admin);
+ 
+   return{employees, admin};  
 }
