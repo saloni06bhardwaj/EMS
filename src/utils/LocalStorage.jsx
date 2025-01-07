@@ -1,4 +1,4 @@
-const employees = [ [
+const employees = [ 
     
         {
             "id": 1,
@@ -136,7 +136,7 @@ const employees = [ [
             ]
         }
     
-]];
+];
 
 const admin = [
     {
