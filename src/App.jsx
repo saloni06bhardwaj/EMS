@@ -10,24 +10,23 @@ const App = () => {
   const [user, setUser] = useState(null)
   const authData = useContext(AuthContext);
   const [loggedInUserData, setLoggedInUserData] = useState(null)
-
-  // useEffect(() => {
-  //   if (authData) {
-  //     const loggedInUser = localStorage.getItem('loggedInUser');
-
-  //     if (loggedInUser) {
-  //       setUser(loggedInUser.role);
-  //     }
-  //   }
-
-  // }, [authData])
-
-
+  
+  useEffect(()=>{
+    const storedUser = localStorage.getItem('storedUser');
+    console.log(storedUser)
+    if(storedUser){
+    const userData=JSON.parse(storedUser)  
+    setUser(userData.role)
+    setLoggedInUserData(userData.data)
+   }
+  }, [])
   const handleLogin = (email, password) => {
     // amazonq-ignore-next-line
     if (email == 'admin@me.com' && password == '123') {
+      
       setUser('admin');
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }));
+    
 
     }
     // amazonq-ignore-next-line
@@ -36,6 +35,7 @@ const App = () => {
       if (employee) {
         setUser('employee');
         localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }));
+        setLoggedInUserData(employee);
       }
 
 
@@ -56,8 +56,7 @@ const App = () => {
   return (
     <div>
       {!user ? <Login handleLogin={handleLogin} /> : ""}
-      {user === 'admin' && <AdminDashboard />}
-      {user === 'employee' && <EmployeeDashBoard />}
+      {user == 'admin'? <AdminDashboard/> : (user =='employee' ? <EmployeeDashBoard data={loggedInUserData}/> : null)}
 
     </div>
   )
