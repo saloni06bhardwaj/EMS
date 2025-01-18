@@ -1,5 +1,9 @@
 import React from 'react';
 
+const logoutUser = () =>{
+  localStorage.setItem('loggedInUser', ' ')
+  window.location.reload()
+}
 const Header = () => {
  
   return (
@@ -12,7 +16,7 @@ const Header = () => {
         </h1>
 
         {/* Logout Button */}
-        <button className="btn btn-outline btn-error">LogOut</button>
+        <button onClick={logoutUser} className="btn btn-outline btn-error">LogOut</button>
       </div>
     </div>
   );
