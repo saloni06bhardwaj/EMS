@@ -10,23 +10,22 @@ const App = () => {
   const [user, setUser] = useState(null)
   const authData = useContext(AuthContext);
   const [loggedInUserData, setLoggedInUserData] = useState(null)
-  
-  useEffect(()=>{
-    const storedUser = localStorage.getItem('storedUser');
-    console.log(storedUser)
-    if(storedUser){
-    const userData=JSON.parse(storedUser)  
-    setUser(userData.role)
-    setLoggedInUserData(userData.data)
-   }
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser)
+      setUser(userData.role)
+      setLoggedInUserData(userData.data)
+    }
   }, [])
   const handleLogin = (email, password) => {
     // amazonq-ignore-next-line
     if (email == 'admin@me.com' && password == '123') {
-      
+
       setUser('admin');
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }));
-    
+
 
     }
     // amazonq-ignore-next-line
@@ -56,7 +55,7 @@ const App = () => {
   return (
     <div>
       {!user ? <Login handleLogin={handleLogin} /> : ""}
-      {user == 'admin'? <AdminDashboard/> : (user =='employee' ? <EmployeeDashBoard data={loggedInUserData}/> : null)}
+      {user == 'admin' ? <AdminDashboard changeUser={setUser} /> : (user == 'employee' ? <EmployeeDashBoard changeUser={setUser} data={loggedInUserData} /> : null)}
 
     </div>
   )

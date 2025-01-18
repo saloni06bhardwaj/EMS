@@ -3,15 +3,15 @@ import Header from '../other/Header'
 import TaskListNumber from '../other/TaskListNumber'
 import TaskList from '../TaskList/TaskList'
 
-const EmployeeDashBoard = ({data}) => {
-  console.log(data)
+const EmployeeDashBoard = (props) => {
+  
   return (
     <div className='h-screen flex flex-col bg-gray-700'>
-      <Header data={data} />
+      <Header changeUser={props.changeUser} data={props.data} />
       <main className='flex-grow'>
-      <TaskListNumber data={data} />
+      <TaskListNumber data={props.data} />
       </main>
-      <TaskList data={data}/>
+      <TaskList data={props.data}/>
     </div>
   )
 }

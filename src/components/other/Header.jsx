@@ -1,11 +1,13 @@
 import React from 'react';
 
+const Header = (props) => {
+ 
 const logoutUser = () =>{
   localStorage.setItem('loggedInUser', ' ')
-  window.location.reload()
+  
+  props.changeUser('')
+  
 }
-const Header = () => {
- 
   return (
     <div>
       <div className=" flex items-start justify-between  text-white px-8 py-9">
